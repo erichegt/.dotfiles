@@ -19,6 +19,8 @@ alias 2do="cd /Ricardo/Programming/projects/gimme2dolist/;rvm 1.8.7-p299@gimme2d
 alias sbp="source ~/.bash_profile"
 alias kp="ps auxwww"
 alias ss="/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine -background &"
+alias tile="~/scripts/tile.sh"
+alias firefox="/Applications/Firefox.app/Contents/MacOS/firefox-bin"
 
 #rvm
 if [ -s ~/.rvm/scripts/rvm ] ; then source ~/.rvm/scripts/rvm ; fi
