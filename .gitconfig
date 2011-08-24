@@ -1,5 +1,5 @@
 [user]
-  name = Ricardo Valeriano
+	name = Ricardo Valeriano
   email = ricardo.valeriano@gmail.com
 [alias]
   st = status
@@ -28,3 +28,5 @@
   added = yellow
   changed = green
   untracked = cyan
+[core]
+	editor = /usr/bin/mvim

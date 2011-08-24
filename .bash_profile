@@ -30,7 +30,7 @@ if [ -f ~/.git-completion.bash ] ; then source ~/.git-completion.bash ; fi
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 export PATH=/Users/ricardo/.gem/ruby/1.8/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH
-export PATH=/usr/share/java/Tools/dev/jruby-1.5.1/bin:$PATH
+#export PATH=/usr/share/java/Tools/dev/jruby-1.5.1/bin:$PATH
 export PATH=/Applications/android-sdk-mac_86/tools:$PATH
 export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/usr/local/spidermonkey/lib
 
@@ -43,3 +43,9 @@ GRAY="\[\033[0;37m\]"
 
 #PS1='[\u@\h] [\[\033[0;36m\]$(rvm-prompt i v p g)\[\033[0m\]] \[\033[1;33m\]\w\a\[\033[0m\]$(__git_ps1 " \[\033[1;32m\](%s)\[\033[0m\]")\n\$ ' 
 PS1='[\u@\h] [\[\033[0;36m\]$(rvm-prompt i v p g)\[\033[0m\]] \[\033[1;33m\]\w\a\[\033[0m\] $(parse_git_branch)\n\$ ' 
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
+
+#pair script:
+export PATH=~/scripts/pair/:$PATH
