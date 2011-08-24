@@ -1,0 +1,4 @@
+colorscheme twilight
+set guifont=Menlo\ regular:h15
+
+au BufNewFile,BufRead *.thor set filetype=ruby
