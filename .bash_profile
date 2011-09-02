@@ -31,7 +31,6 @@ export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 export PATH=/Users/ricardo/.gem/ruby/1.8/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH
 #export PATH=/usr/share/java/Tools/dev/jruby-1.5.1/bin:$PATH
-export PATH=/Applications/android-sdk-mac_86/tools:$PATH
 export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/usr/local/spidermonkey/lib
 
 WHITE="\[\033[1;37m\]" 
