@@ -4,3 +4,5 @@ set guifont=Menlo\ regular:h15
 au BufNewFile,BufRead *.thor set filetype=ruby
 au BufNewFile,BufRead Gemfile set filetype=ruby
 au BufNewFile,BufRead Guardfile set filetype=ruby
+
+let NERDTreeShowHidden=1
