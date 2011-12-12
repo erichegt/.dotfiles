@@ -47,4 +47,8 @@ PS1='[\u@\h] [\[\033[0;36m\]$(rvm-prompt i v p g)\[\033[0m\]] \[\033[1;33m\]\w\a
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
 
 #pair script:
-export PATH=~/scripts/pair/:$PATH
+export PATH=~/.dotfiles/scripts/pair/:$PATH
+
+#ftp server:
+export PATH=~/.dotfiles/scripts/ftpserver_start/:$PATH
+export PATH=~/.dotfiles/scripts/ftpserver_stop/:$PATH
