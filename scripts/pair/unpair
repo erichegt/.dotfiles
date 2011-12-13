@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PAIR_FILE=~/scripts/pair/pair.cfg
+PAIR_FILE=~/.dotfiles/scripts/pair/pair.cfg
 if [ ! -f $PAIR_FILE ]; then echo "ERRO: Arquivo 'pair.cfg' nao encontrado. Configuracoes nao alteradas." && exit 1; fi
 . $PAIR_FILE
 git config --global user.name "$MY_NAME_IS"
