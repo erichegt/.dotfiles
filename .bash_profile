@@ -3,14 +3,26 @@ function parse_git_dirty {
     [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
 }
 
+function current_branch_name {
+    echo $(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1/")
+}
+
 function parse_git_branch {
     GIT_COLOR='\e[1;37m'
     if [[ $(parse_git_dirty) == '*' ]] ; then
         GIT_COLOR='\e[0;32m'
     fi
-    GIT_BRANCH=$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/")
+    GIT_BRANCH="[$(current_branch_name)$(parse_git_dirty)]"
     echo $GIT_BRANCH
 }
+
+function rebasing_like_a_boss {
+  current_branch=$(current_branch_name)
+  if [ $1 ] ; then to_branch=$1 ; else to_branch="master" ; fi;
+  git co $to_branch && git pull --rebase && git rebase $current_branch && git pull --rebase && git push && git co $current_branch && git rebase $to_branch
+}
+
+alias gitgo="rebasing_like_a_boss"
 
 #aliases:
 alias rfjs="cd /Ricardo/Programming/projects/restfulie-javascript"
