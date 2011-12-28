@@ -16,10 +16,19 @@ function parse_git_branch {
     echo $GIT_BRANCH
 }
 
-function rebasing_like_a_boss {
-  current_branch=$(current_branch_name)
+function choosing_branches {
+  current_branch=$(current_branch_name $1)
   if [ $1 ] ; then to_branch=$1 ; else to_branch="master" ; fi;
+}
+
+function rebasing_like_a_boss {
+  $(choosing_branches)
   git co $to_branch && git pull --rebase && git rebase $current_branch && git pull --rebase && git push && git co $current_branch && git rebase $to_branch
+}
+
+function pulando_like_a_boss {
+  $(choosing_branches)
+  git co $to_branch && git pull --rebase && git co $current_branch && git rebase $to_branch
 }
 
 alias gitgo="rebasing_like_a_boss"
