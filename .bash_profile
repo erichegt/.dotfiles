@@ -32,7 +32,7 @@ function pulando_like_a_boss {
 }
 
 alias gitgo="rebasing_like_a_boss"
-alias gitpull = "pulando_like_a_boss"
+alias gitpull="pulando_like_a_boss"
 
 #aliases:
 alias rfjs="cd /Ricardo/Programming/projects/restfulie-javascript"
