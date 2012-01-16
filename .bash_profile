@@ -1,10 +1,19 @@
 # git
 function parse_git_dirty {
-    [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
+    git_dirty=$(git status 2> /dev/null | tail -n1)
+    if [[ $git_dirty != "" && $git_dirty != "nothing to commit (working directory clean)" ]]; then
+      echo "*"
+    fi
 }
 
 function current_branch_name {
-    echo $(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1/")
+    current_branch_name="$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1/")"
+    echo $current_branch_name
+}
+
+function to_branch {
+    if [ $1 ] ; then to_branch=$1 ; else to_branch="master" ; fi;
+    echo $to_branch
 }
 
 function parse_git_branch {
@@ -16,19 +25,21 @@ function parse_git_branch {
     echo $GIT_BRANCH
 }
 
-function choosing_branches {
-  current_branch=$(current_branch_name $1)
-  if [ $1 ] ; then to_branch=$1 ; else to_branch="master" ; fi;
-}
-
 function rebasing_like_a_boss {
-  $(choosing_branches)
-  git co $to_branch && git pull --rebase && git rebase $current_branch && git pull --rebase && git push && git co $current_branch && git rebase $to_branch
+    current_branch=$(current_branch_name)
+    to_branch=$(to_branch)
+
+    if [[ $current_branch == 'master' ]]; then
+      git pull && git push
+    else
+      git co $to_branch && git pull && git rebase $current_branch && git pull && git push && git co $current_branch && git rebase $to_branch
+    fi
 }
 
 function pulando_like_a_boss {
-  $(choosing_branches)
-  git co $to_branch && git pull --rebase && git co $current_branch && git rebase $to_branch
+    current_branch=$(current_branch_name)
+    to_branch=$(to_branch)
+    git co $to_branch && git pull && git co $current_branch && git rebase $to_branch
 }
 
 alias gitgo="rebasing_like_a_boss"
