@@ -21,7 +21,10 @@ function parse_git_branch {
     if [[ $(parse_git_dirty) == '*' ]] ; then
         GIT_COLOR='\e[0;32m'
     fi
-    GIT_BRANCH="[$(current_branch_name)$(parse_git_dirty)]"
+    GIT_BRANCH="$(current_branch_name)$(parse_git_dirty)"
+    if [[ $GIT_BRANCH != "" ]]; then
+      GIT_BRANCH="[$GIT_BRANCH]"
+    fi
     echo $GIT_BRANCH
 }
 
@@ -71,10 +74,16 @@ BRIGHTGREEN="\[\033[1;32m\]"
 GREEN="\[\033[0;32m\]" 
 CYAN="\[\033[0;36m\]" 
 GRAY="\[\033[0;37m\]"
-#export PS1="${WHITE}\u@\h ${GREEN}\W${WHITE} ${CYAN}$(rvm-prompt i v p g) ${WHITE}$(parse_git_branch)${GRAY}$ "
 
-#PS1='[\u@\h] [\[\033[0;36m\]$(rvm-prompt i v p g)\[\033[0m\]] \[\033[1;33m\]\w\a\[\033[0m\]$(__git_ps1 " \[\033[1;32m\](%s)\[\033[0m\]")\n\$ ' 
-PS1='[\u@\h] [\[\033[0;36m\]$(rvm-prompt i v p g)\[\033[0m\]] \[\033[1;33m\]\w\a\[\033[0m\] $(parse_git_branch)\n\$ ' 
+function current_ruby {
+  current_ruby=$(rvm-prompt i v p g)
+  if [[ $current_ruby == "" ]]; then
+    current_ruby=$(ruby -e "v = %x(ruby -v).split(' '); puts \"#{v[0]}-#{v[1]} (non-rvm)\"")
+  fi
+  echo $current_ruby
+}
+
+PS1='[\u@\h] [\[\033[0;36m\]$(current_ruby)\[\033[0m\]] \[\033[1;33m\]\w\a\[\033[0m\] $(parse_git_branch)\n\$ ' 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
