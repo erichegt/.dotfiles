@@ -7,6 +7,3 @@ au BufNewFile,BufRead Guardfile set filetype=ruby
 au BufRead,BufNewFile *.afc call s:setupWrapping()
 
 let NERDTreeShowHidden=1
-
-autocmd VimEnter * NERDTree
-autocmd BufEnter * NERDTreeMirror
