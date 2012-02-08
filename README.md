@@ -1,7 +1,7 @@
 #vimfiles:
 
-`$git clone git@github.com:ricardovaleriano/.dotfiles.git`
+`git clone git@github.com:ricardovaleriano/.dotfiles.git`
 
-`$cd .dotfiles`
+`cd .dotfiles`
 
-`$rake`
+`rake`
