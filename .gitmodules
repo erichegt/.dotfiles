@@ -1,0 +1,27 @@
+[submodule "vimfiles/sources/snipmate-snippets"]
+	path = vimfiles/sources/snipmate-snippets
+	url = https://github.com/honza/snipmate-snippets.git
+[submodule "vimfiles/sources/vim-snipmate"]
+	path = vimfiles/sources/vim-snipmate
+	url = https://github.com/garbas/vim-snipmate.git
+[submodule "vimfiles/sources/vim-ruby"]
+	path = vimfiles/sources/vim-ruby
+	url = https://github.com/vim-ruby/vim-ruby.git
+[submodule "vimfiles/sources/vim-pathogen"]
+	path = vimfiles/sources/vim-pathogen
+	url = https://github.com/tpope/vim-pathogen.git
+[submodule "vimfiles/sources/vim-endwise"]
+	path = vimfiles/sources/vim-endwise
+	url = git://github.com/tpope/vim-endwise.git
+[submodule "vimfiles/sources/vim-addon-mw-utils"]
+	path = vimfiles/sources/vim-addon-mw-utils
+	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
+[submodule "vimfiles/sources/tlib_vim"]
+	path = vimfiles/sources/tlib_vim
+	url = https://github.com/tomtom/tlib_vim.git
+[submodule "vimfiles/sources/syntastic"]
+	path = vimfiles/sources/syntastic
+	url = https://github.com/scrooloose/syntastic.git
+[submodule "vimfiles/sources/supertab"]
+	path = vimfiles/sources/supertab
+	url = https://github.com/ervandew/supertab.git

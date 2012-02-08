@@ -1,6 +1,0 @@
-colorscheme twilight
-
-autocmd VimEnter * NERDTree
-autocmd BufEnter * NERDTreeMirror
-
-set guioptions-=T

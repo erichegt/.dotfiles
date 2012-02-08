@@ -1,9 +1,0 @@
-colorscheme twilight
-set guifont=Menlo\ regular:h15
-
-au BufNewFile,BufRead *.thor set filetype=ruby
-au BufNewFile,BufRead Gemfile set filetype=ruby
-au BufNewFile,BufRead Guardfile set filetype=ruby
-au BufRead,BufNewFile *.afc call s:setupWrapping()
-
-let NERDTreeShowHidden=1

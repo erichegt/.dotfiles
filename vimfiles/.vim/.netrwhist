@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/Users/ricardovaleriano/.vim-janus/janus/vim/langs/ruby/compiler'
+let g:netrw_dirhist_2='/Users/ricardovaleriano/.dotfiles/vimfiles/sources/vim-ruby/ftplugin'
+let g:netrw_dirhist_3='/Users/ricardovaleriano/.dotfiles/vimfiles/sources/syntastic/doc'
