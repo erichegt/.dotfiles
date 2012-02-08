@@ -23,15 +23,20 @@ end
 desc "use [dir] option to change the default \"~\" dir - configure vimfiles"
 task :default => [:"link:dir", :"link:vimrc", :"link:gvimrc"]
 
-namespace :git do
+desc "upgrade the git project"
+task :upgrade do
+  command "git pull"
+  Rake::Task[:"git:update"].invoke
+end
 
+namespace :git do
   desc "init submodules"
   task :submodules do
     command "git submodule init"
   end
 
   desc "update submodules"
-  task :update do
+  task :update => :submodules do
     command "git submodule update"
   end
 
@@ -40,7 +45,7 @@ end
 namespace :link do
 
   desc "symbolic link to .vim dir"
-  task :dir => [:"git:submodules", :"git:update"] do
+  task :dir => :"git:update" do
     on_dir do
       command "ln -s #{vimfiles_dir}/.vim .vim"
     end
