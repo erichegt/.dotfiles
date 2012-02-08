@@ -12,7 +12,7 @@ end
 
 def on_dir(dir = (ENV["dir"] || `echo ~`.strip))
   pwd = Dir.pwd
-  unless File.directory?(ENV["dir"])
+  unless ENV["dir"] && File.directory?(ENV["dir"])
     Dir.mkdir(ENV["dir"])
   end
   Dir.chdir dir
