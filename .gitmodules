@@ -25,3 +25,6 @@
 [submodule "vimfiles/sources/supertab"]
 	path = vimfiles/sources/supertab
 	url = https://github.com/ervandew/supertab.git
+[submodule "vimfiles/sources/github_vim_theme"]
+	path = vimfiles/sources/github_vim_theme
+	url = https://github.com/nono/github_vim_theme.git
