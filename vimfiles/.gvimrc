@@ -1,4 +1,4 @@
-:color twilight
+:color github
 set guifont=Menlo\ regular:h15
 set guioptions-=T
 

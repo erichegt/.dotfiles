@@ -1,3 +1,8 @@
+function SetupWrapping(w)
+  set textwidth=85
+endfunction
+
+
 call pathogen#infect()
 syntax on
 filetype plugin indent on
@@ -7,7 +12,7 @@ set number
 au BufNewFile,BufRead *.thor set filetype=ruby
 au BufNewFile,BufRead Gemfile set filetype=ruby
 au BufNewFile,BufRead Guardfile set filetype=ruby
-au BufRead,BufNewFile *.afc call s:setupWrapping()
+au BufRead,BufNewFile *.afc call SetupWrapping(85)
 
 set laststatus=2
 set statusline+=%#warningmsg#
@@ -20,7 +25,6 @@ set shiftwidth=2                  " an autoindent (with <<) is two spaces
 set expandtab                     " use spaces, not tabs
 set list                          " Show invisible characters
 set backspace=indent,eol,start    " backspace through everything in insert mode
-set textwidth=85
 
 set listchars=""                  " Reset the listchars
 set listchars=tab:\ \             " a tab should display as "  ", trailing whitespace as "."

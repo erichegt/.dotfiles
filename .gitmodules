@@ -31,3 +31,9 @@
 [submodule "vimfiles/sources/nerdtree"]
 	path = vimfiles/sources/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
+[submodule "vimfiles/sources/vim-afc"]
+	path = vimfiles/sources/vim-afc
+	url = https://github.com/adrianoalmeida7/vim-afc.git
+[submodule "vimfiles/sources/vim-fugitive"]
+	path = vimfiles/sources/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
