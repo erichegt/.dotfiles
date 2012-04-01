@@ -1,16 +1,10 @@
 # git
 GIT_COLOR='\e[0;37m'
 function parse_git_dirty {
-    git_dirty=$(git status 2> /dev/null | tail -n1)
-    if [[ $git_dirty != "" &&
-          $git_dirty != "nothing to commit (working directory clean)" ]]; then
-      echo "*"
-    fi
+  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
 }
-
-function current_branch_name {
-    current_branch_name="$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1/")"
-    echo $current_branch_name
+function parse_git_branch {
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/"
 }
 
 function to_branch {
