@@ -17,15 +17,16 @@ function to_branch {
 }
 
 function parse_git_branch {
-    GIT_COLOR='\e[1;37m'
+    GIT_COLOR='\e[0;37m'
     if [[ $(parse_git_dirty) == '*' ]] ; then
         GIT_COLOR='\e[0;32m'
     fi
-    GIT_BRANCH="$(current_branch_name)$(parse_git_dirty)"
+
+    GIT_BRANCH="$(current_branch_name)"
     if [[ $GIT_BRANCH != "" ]]; then
-      GIT_BRANCH="[$GIT_BRANCH]"
+      GIT_BRANCH="(\[$GIT_COLOR\]$GIT_BRANCH$(parse_git_dirty)\e[m)"
     fi
-    echo $GIT_BRANCH
+    echo "$GIT_BRANCH"
 }
 
 function rebasing_like_a_boss {
@@ -72,7 +73,7 @@ function current_ruby {
 }
 
 
-PS1='[\u@\h] [\e[0;30m$(current_ruby)\e[m] \w\a $(parse_git_branch)\n\$ ' 
+PS1="[\u@\h] [\e[0;30m$(current_ruby)\e[m] \e[0;33m\w\a\e[m $(parse_git_branch)\n\$ " 
 
 #pair script:
 export PATH=~/.dotfiles/scripts/pair/:$PATH
