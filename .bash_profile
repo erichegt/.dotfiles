@@ -26,6 +26,8 @@ function parse_git_branch {
     GIT_BRANCH="$(current_branch_name)"
     if [[ $GIT_BRANCH != "" ]]; then
       echo "(\[$GIT_COLOR\]$GIT_BRANCH$(parse_git_dirty)\e[m)"
+    else
+      echo ""
     fi
 }
 
