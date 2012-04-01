@@ -1,7 +1,9 @@
 # git
+GIT_COLOR='\e[0;37m'
 function parse_git_dirty {
     git_dirty=$(git status 2> /dev/null | tail -n1)
-    if [[ $git_dirty != "" && $git_dirty != "nothing to commit (working directory clean)" ]]; then
+    if [[ $git_dirty != "" &&
+          $git_dirty != "nothing to commit (working directory clean)" ]]; then
       echo "*"
     fi
 }
@@ -17,16 +19,14 @@ function to_branch {
 }
 
 function parse_git_branch {
-    GIT_COLOR='\e[0;37m'
     if [[ $(parse_git_dirty) == '*' ]] ; then
         GIT_COLOR='\e[0;32m'
     fi
 
     GIT_BRANCH="$(current_branch_name)"
     if [[ $GIT_BRANCH != "" ]]; then
-      GIT_BRANCH="(\[$GIT_COLOR\]$GIT_BRANCH$(parse_git_dirty)\e[m)"
+      echo "(\[$GIT_COLOR\]$GIT_BRANCH$(parse_git_dirty)\e[m)"
     fi
-    echo "$GIT_BRANCH"
 }
 
 function rebasing_like_a_boss {
