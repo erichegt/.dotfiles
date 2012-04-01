@@ -12,19 +12,6 @@ function to_branch {
     echo $to_branch
 }
 
-function parse_git_branch {
-    if [[ $(parse_git_dirty) == '*' ]] ; then
-        GIT_COLOR='\e[0;32m'
-    fi
-
-    GIT_BRANCH="$(current_branch_name)"
-    if [[ $GIT_BRANCH != "" ]]; then
-      echo "(\[$GIT_COLOR\]$GIT_BRANCH$(parse_git_dirty)\e[m)"
-    else
-      echo ""
-    fi
-}
-
 function rebasing_like_a_boss {
     current_branch=$(current_branch_name)
     to_branch=$(to_branch)
