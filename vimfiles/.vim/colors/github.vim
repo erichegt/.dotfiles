@@ -1,1 +1,0 @@
-../../sources/github_vim_theme/github.vim

@@ -1,18 +1,20 @@
 function SetupWrapping(w)
   set textwidth=85
+  set colorcolumn=85
 endfunction
-
 
 call pathogen#infect()
 syntax on
 filetype plugin indent on
+
+:color github
 
 set number
 
 au BufNewFile,BufRead *.thor set filetype=ruby
 au BufNewFile,BufRead Gemfile set filetype=ruby
 au BufNewFile,BufRead Guardfile set filetype=ruby
-au BufRead,BufNewFile *.afc call SetupWrapping(85)
+au BufNewFile,BufRead *.afc,*.afc.txt,*.md,README,Readme call SetupWrapping(85)
 
 set laststatus=2
 set statusline+=%#warningmsg#
@@ -32,7 +34,6 @@ set listchars+=trail:.            " show trailing spaces as dots
 set listchars+=extends:>          " The character to show in the last column when wrap is
                                   " off and the line continues beyond the right of the screen
 set listchars+=precedes:<         " The character to show in the last column when wrap is
-                                  " off and the line continues beyond the right of the screen
 
 let mapleader=","
 
