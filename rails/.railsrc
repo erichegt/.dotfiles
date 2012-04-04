@@ -1,0 +1,3 @@
+--skip-test-unit
+-d mysql
+-m ~/.rails/3.2.2_rspec.rb

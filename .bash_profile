@@ -1,50 +1,31 @@
+#mac colorized terminal output
+export CLICOLOR=1
+export LSCOLORS=ExFxCxDxBxegedabagacad
+
+#rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
 # git
-GIT_COLOR='\e[0;37m'
+if [ -f ~/.git-completion.bash ] ; then source ~/.git-completion.bash ; fi
+
 function parse_git_dirty {
   [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
 }
 function parse_git_branch {
-  echo $(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/")
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/"
 }
-
-function to_branch {
-    if [ $1 ] ; then to_branch=$1 ; else to_branch="master" ; fi;
-    echo $to_branch
-}
-
-function rebasing_like_a_boss {
-    current_branch=$(current_branch_name)
-    to_branch=$(to_branch)
-
-    if [[ $current_branch == 'master' ]]; then
-      git pull && git push
-    else
-      git co $to_branch && git pull && git rebase $current_branch && git pull && git push && git co $current_branch && git rebase $to_branch
-    fi
-}
-
-function pulando_like_a_boss {
-    current_branch=$(current_branch_name)
-    to_branch=$(to_branch)
-    git co $to_branch && git pull && git co $current_branch && git rebase $to_branch
-}
-
-alias gitgo="rebasing_like_a_boss"
-alias gitpull="pulando_like_a_boss"
 
 #aliases:
 alias sbp="source ~/.bash_profile"
 alias kp="ps auxwww"
-alias ss="/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine -background &"
-alias firefox="/Applications/Firefox.app/Contents/MacOS/firefox-bin"
+alias ss="open /System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app"
 
-if [ -f ~/.git-completion.bash ] ; then source ~/.git-completion.bash ; fi
-
-export CLICOLOR=1
-export LSCOLORS=ExFxCxDxBxegedabagacad
+alias firefox="open /Applications/Firefox.app"
+alias chrome="open /Applications/Google\ Chrome.app"
+alias please="bundle exec rake"
 export PATH=/Users/ricardo/.gem/ruby/1.8/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH
-#export PATH=/usr/share/java/Tools/dev/jruby-1.5.1/bin:$PATH
-export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/usr/local/spidermonkey/lib
+export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/usr/local/spidermonkey/lib:/usr/local/mysql/lib/
 
 function current_ruby {
   #current_ruby=$(rvm-prompt i v p g)
@@ -55,13 +36,10 @@ function current_ruby {
   ruby -v | ruby -e 'puts "rubái #{gets.chop.split(" ")[1]}"'
 }
 
-
-PS1="[\u@\h] [\e[0;30m$(current_ruby)\e[m] \e[0;33m\w\a\e[m $(parse_git_branch)\n\$ " 
-
 #pair script:
 export PATH=~/.dotfiles/scripts/pair/:$PATH
 
 #scripts:
 export PATH=~/.dotfiles/scripts/:$PATH
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+
+PS1="[\u@\h] [\e[0;30m$(current_ruby)\e[m] \e[0;33m\w\a\e[m $(parse_git_branch)\n\$ " 
